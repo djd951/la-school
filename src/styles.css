@@ -1,0 +1,186 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background: url('assets/pp2.png') center center/cover no-repeat fixed;
+  font-family: 'Open Sans', sans-serif; /* Font family plus professionnelle */
+}
+
+
+.container {
+  max-width: 800px;
+  margin: 20px; /* Léger espace autour du conteneur pour éviter qu'il touche les bords */
+  background: rgba(255, 255, 255, 0.95); /* Fond blanc semi-transparent */
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Empêche les débordements à l'intérieur du conteneur */
+}
+
+.site-name {
+  font-size: 36px;
+  color: #4CAF50;
+  text-align: center; /* Centrer le titre */
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour augmenter la lisibilité */
+}
+
+.subject-menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Centrer les éléments du menu */
+  flex-wrap: wrap;
+  margin-bottom: 30px; /* Espacement avant la section des flashcards */
+}
+
+.subject-item {
+  flex-basis: 18%;
+  text-align: center;
+  margin: 10px; /* Espacement autour des éléments du menu */
+}
+
+.subject-link {
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+
+.subject-icon {
+  width: 50px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.flashcard-section {
+  margin-top: 20px;
+}
+
+.flashcard {
+  background: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.flashcard:hover {
+  transform: translateY(-5px); /* Effet au survol */
+}
+
+.question {
+  font-size: 18px;
+}
+
+.reveal-btn {
+  background: #5c6bc0;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reveal-btn:hover {
+  background: #3949ab;
+}
+
+.answer {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #007bff;
+}
+.create-flashcard, .user-flashcards {
+  background: rgba(255, 255, 255, 0.9); /* Légère transparence */
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
+  width: 100%; /* Pleine largeur */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.create-flashcard textarea, .user-flashcards textarea {
+  width: 100%; /* Pleine largeur */
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.create-flashcard button, .user-flashcards button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.create-flashcard button:hover, .user-flashcards button:hover {
+  background: #367c39;
+}
+
+.user-flashcard {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+/* ...styles existants... */
+
+.user-flashcard {
+  position: relative;
+}
+
+.card-actions {
+
+  position: absolute;
+
+  top: 0;
+
+  right: 0;
+
+  padding: 10px;
+
+}
+/* Mettez à jour les styles dans votre fichier CSS */
+
+.flashcard {
+    position: relative;
+    width: 650px; /* Ajustez la largeur selon vos préférences */
+    height: 120px; /* Ajustez la hauteur selon vos préférences */
+    margin: 0 10px 20px; /* Ajout de marges pour l'espace entre les cartes */
+    perspective: 1000px;
+}
+
+.flashcard-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.flashcard.revealed .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+}
+

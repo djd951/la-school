@@ -1,0 +1,65 @@
+<!-- app.component.html -->
+<div class="container">
+  <header>
+    <h1 class="site-name">{{ siteName }}</h1>
+    <nav>
+      <ul class="subject-menu">
+        <!-- Afficher les matières dynamiquement -->
+        <li *ngFor="let subject of subjects" class="subject-item">
+          <a href="#" (click)="selectSubject(subject.name)" class="subject-link">
+            <img [src]="subject.icon" alt="{{ subject.name }}" class="subject-icon">
+            <div class="subject-name">{{ subject.name }}</div>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section *ngIf="selectedSubject" class="flashcard-section">
+    <h2>{{ getSubjectLabel() }}</h2> <!-- Utilisez la nouvelle méthode getSubjectLabel ici -->
+    <div *ngIf="selectedSubject !== 'Mes flash-cards'">
+      <!-- Afficher les flashcards normales -->
+      <article class="flashcard" *ngFor="let card of flashcards; let i = index" [ngClass]="{ 'revealed': card.revealed }">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="question">{{ card.question }}</div>
+            <div class="answer-btn">
+              <button (click)="revealAnswer(card)" class="btn btn-success btn-sm">Réponse</button>
+            </div>
+          </div>
+          <div class="flashcard-back">
+            <div class="answer">{{ getAnswerText(card) }}</div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+
+    <div *ngIf="selectedSubject === 'Mes flash-cards'" class="create-flashcard">
+      <!-- Formulaire pour créer des flashcards utilisateur -->
+      <label for="questionInput">Question:</label>
+      <textarea id="questionInput" [(ngModel)]="newFlashcard.question"></textarea>
+      <label for="answerInput">Réponse:</label>
+      <textarea id="answerInput" [(ngModel)]="newFlashcard.answer"></textarea>
+      <button (click)="addNewFlashcard()" class="btn btn-primary btn-sm">Nouvelle Flash-card</button>
+    </div>
+
+    <div *ngIf="selectedSubject === 'Mes flash-cards'" class="user-flashcards">
+      <!-- Afficher les flashcards de l'utilisateur -->
+      <h3>Vos Flashcards</h3>
+      <div class="user-flashcard" *ngFor="let card of userFlashcards; let i = index" style="margin-bottom: 15px;">
+        <div class="question">{{ card.question }}</div>
+        <div class="answer-btn">
+          <button (click)="card.revealed = !card.revealed" class="btn btn-success btn-sm">Réponse</button>
+        </div>
+        <div class="answer" *ngIf="card.revealed">{{ getAnswerText(card) }}</div>
+        <div class="card-actions" style="margin-top: 10px;">
+          <button (click)="editFlashcard(i)" class="btn btn-primary btn-sm">Modifier</button>
+          <button (click)="deleteFlashcard(i)" class="btn btn-danger btn-sm" style="margin-left: 5px;">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
