@@ -12,7 +12,7 @@ Before you start building and launching the La School app, make sure you have th
 
 Clone the La School repository to your local machine using the following command:
 
-git clone https://github.com/your-username/la-school.git
+git clone https://github.com/djd951/la-school.git
 
 ## Install Dependencies
 
