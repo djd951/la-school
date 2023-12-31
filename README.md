@@ -22,6 +22,7 @@ If you want to modify one of your flashcards, you just have to click on "Modifie
 ![Alt Text](./images_readme/flashcards-modifie-dans-vosflashcards.png)
 
 You can also delete one of your flashcards by clicking on "Supprimer", and then, it will be removed from your flashcards section.
+
 ![Alt Text](./images_readme/message-supprimer-flashcard.png)
 ![Alt Text](./images_readme/mes-flashcards-vide.png)
 
